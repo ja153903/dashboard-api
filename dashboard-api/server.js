@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const dashboardEntry = require('./routes/dashboard-entry')
 require('dotenv').config()
 
@@ -17,6 +18,7 @@ app.listen(port, () => {
   console.log(`Port running on localhost:${port}`)
 })
 
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use('/api/dashboard', dashboardEntry)
